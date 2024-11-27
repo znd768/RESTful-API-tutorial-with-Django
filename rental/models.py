@@ -20,6 +20,7 @@ class Offer(models.Model):
     price = models.PositiveIntegerField(default=0)
     sharing = models.BooleanField(default=False)
     text = models.TextField(default='')
+    author = models.ForeignKey('auth.User', related_name='offers', on_delete=models.CASCADE, default='Unknown')
 
     class Meta:
         ordering = ['created']
