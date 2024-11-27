@@ -17,7 +17,7 @@ class Offer(models.Model):
     address = models.CharField(max_length=100, blank=True, default='')
     size = models.CharField(choices=SIZE_CHOICES, default='1BR', max_length=100)
     type = models.CharField(choices=TYPES_CHOICES, default='APT', max_length=100)
-    price = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(default=0)
     sharing = models.BooleanField(default=False)
     text = models.TextField(default='')
 
