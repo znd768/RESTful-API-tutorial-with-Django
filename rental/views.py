@@ -2,6 +2,7 @@ from rest_framework import generics
 from rest_framework import permissions
 from rental.models import Offer
 from rental.serializers import OfferSerializer, UserSerializer
+from rental.permissons import IsAuthorOrReadOnly
 from django.contrib.auth.models import User
 
 
@@ -15,7 +16,7 @@ class OfferList(generics.ListCreateAPIView):
 class OfferDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
